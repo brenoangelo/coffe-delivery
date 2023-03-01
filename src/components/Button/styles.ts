@@ -24,6 +24,7 @@ interface ContainerProps {
   colorDetailsHover: ColorDetails | boolean;
   fontWeight: number;
   size: 'SM' | 'MD';
+  textTransform: 'uppercase' | 'capitalize' | 'uppercase' | 'lowercase';
 }
 
 const setColorDetails = (
@@ -35,12 +36,14 @@ const setColorDetails = (
   const colorState = state === 'default' ? colorDetails : colorDetailsHover;
 
   return colors[
-    colorState[type as ColorStateKeysType ?? 'default']
+    colorState[(type as ColorStateKeysType) ?? 'default']
   ] as keyof ThemeType;
 };
 
 export const Container = styled.button<ContainerProps>`
-  display: inline-flex;
+  position: relative;
+
+  display: flex;
   align-items: center;
   justify-content: center;
   gap: 0.25rem;
@@ -49,7 +52,8 @@ export const Container = styled.button<ContainerProps>`
   border-radius: 0.375rem;
   border: none;
 
-  text-transform: uppercase;
+  text-transform: ${({ textTransform }) => textTransform};
+
   font-weight: ${({ fontWeight }) => fontWeight};
   font-size: ${({ size }) => (size === 'MD' ? '0.875rem' : '0.75rem')};
 
@@ -59,6 +63,28 @@ export const Container = styled.button<ContainerProps>`
 
   svg {
     color: ${(props) => props.theme[setColorDetails(props, 'default', 'icon')]};
+  }
+
+  .circleCount {
+    position: absolute;
+    right: -8px;
+    top: -8px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    height: 1.25rem;
+    width: 1.25rem;
+
+    border-radius: 50%;
+
+    background-color: ${(props) =>
+      props.theme[setColorDetails(props, 'default', 'icon')]};
+    color: ${(props) => props.theme['white']};
+    font-size: 0.75rem;
+    font-weight: 700;
+
   }
 
   transition: color, background-color 0.2s;

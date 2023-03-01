@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import { ButtonHTMLAttributes, ReactNode } from 'react';
 import { Container, ColorDetails } from './styles';
 
 const colorDetailsDefault: ColorDetails = {
@@ -11,14 +11,14 @@ const colorDetailsHoverDefault: ColorDetails = {
   background: 'purple',
 };
 
-interface ButtonProps {
+interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   topCountNumber?: number | null;
   children: ReactNode;
   colorDetails?: ColorDetails;
   colorDetailsHover?: ColorDetails | boolean;
   fontWeight?: number;
+  textTransform?: 'uppercase' | 'capitalize' | 'uppercase' | 'lowercase';
   size?: 'SM' | 'MD';
-  onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
 }
 
 export function Button({
@@ -27,17 +27,18 @@ export function Button({
   colorDetails = colorDetailsDefault,
   colorDetailsHover = colorDetailsHoverDefault,
   topCountNumber = null,
-  onClick,
+  textTransform = 'uppercase',
   children,
-}:
-ButtonProps) {
+  ...props
+}: ButtonProps) {
   return (
     <Container
       colorDetails={colorDetails}
       colorDetailsHover={colorDetailsHover}
       fontWeight={fontWeight}
       size={size}
-      onClick={onClick}
+      textTransform={textTransform}
+      {...props}
     >
       {topCountNumber && <span className="circleCount">{topCountNumber}</span>}
       {children}

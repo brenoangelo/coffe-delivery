@@ -11,8 +11,17 @@ export function Header() {
       </Logo>
 
       <MenuContainer>
-        <Button>
-          <MapPin size={22} /> Timon, MA
+        <Button
+          colorDetails={{
+            background: 'lightPurple',
+            icon: 'purple',
+            text: 'darkPurple',
+          }}
+          colorDetailsHover={false}
+          textTransform="capitalize"
+          disabled
+        >
+          <MapPin size={22} weight="fill" /> Timon, MA
         </Button>
         <Button
           colorDetails={{
@@ -20,8 +29,9 @@ export function Header() {
             icon: 'darkYellow',
           }}
           colorDetailsHover={false}
+          topCountNumber={3}
         >
-          <ShoppingCart size={22} />
+          <ShoppingCart size={22} weight="fill" />
         </Button>
       </MenuContainer>
     </Container>
