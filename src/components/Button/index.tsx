@@ -1,5 +1,5 @@
 import { ButtonHTMLAttributes, ReactNode } from 'react';
-import { Container, ColorDetails } from './styles';
+import { StyledButton, ColorDetails } from './styles';
 
 const colorDetailsDefault: ColorDetails = {
   text: 'white',
@@ -32,7 +32,7 @@ export function Button({
   ...props
 }: ButtonProps) {
   return (
-    <Container
+    <StyledButton
       colorDetails={colorDetails}
       colorDetailsHover={colorDetailsHover}
       fontWeight={fontWeight}
@@ -42,6 +42,6 @@ export function Button({
     >
       {topCountNumber && <span className="circleCount">{topCountNumber}</span>}
       {children}
-    </Container>
+    </StyledButton>
   );
 }

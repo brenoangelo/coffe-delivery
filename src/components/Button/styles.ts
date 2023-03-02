@@ -40,7 +40,7 @@ const setColorDetails = (
   ] as keyof ThemeType;
 };
 
-export const Container = styled.button<ContainerProps>`
+export const StyledButton = styled.button<ContainerProps>`
   position: relative;
 
   display: flex;
