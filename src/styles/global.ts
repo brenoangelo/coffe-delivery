@@ -8,8 +8,8 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   body {
-    background: ${props => props.theme['gray-100']};
-    color: ${props => props.theme['gray-900']};
+    background: ${(props) => props.theme['gray-100']};
+    color: ${(props) => props.theme['gray-900']};
 
     -webkit-font-smoothing: antialiased;
   }
@@ -24,11 +24,20 @@ export const GlobalStyle = createGlobalStyle`
     font-family: 'Baloo 2', cursive;
   }
 
+  p, span, input {
+    color: ${props => props.theme['gray-800']};
+  }
+
   button {
     cursor: pointer;
   }
 
   [disabled] {
     cursor: default;
+  }
+
+  :focus {
+    outline: 0;
+    box-shadow: 0 0 0 2px ${(props) => props.theme['yellow-700']};
   }
 `;
