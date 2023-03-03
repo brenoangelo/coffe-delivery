@@ -1,6 +1,7 @@
-import { MapPinLine } from 'phosphor-react';
-import { Input } from './Input';
-import { FormBox, InputGroup, SectionLabel, StyledForm } from './styles';
+import { CurrencyDollar, MapPinLine } from 'phosphor-react';
+import { Input } from './components/Input';
+import { PaymentOption } from './components/PaymentOption';
+import { FormBox, InputGroup, OptionGroup, SectionLabel, StyledForm } from './styles';
 
 export function Form() {
   return (
@@ -8,8 +9,8 @@ export function Form() {
       <h4>Complete seu pedido</h4>
 
       <FormBox>
-        <SectionLabel>
-          <MapPinLine weight="regular" size={22} />
+        <SectionLabel iconColor="yellow">
+          <MapPinLine size={22} />
           <div>
             <span>Endereço de Entrega</span>
             <p>Informe o endereço onde deseja receber seu pedido</p>
@@ -24,6 +25,22 @@ export function Form() {
           <Input type="text" placeholder="Cidade" />
           <Input type="text" placeholder="UF" maxLength={2} />
         </InputGroup>
+      </FormBox>
+
+      <FormBox>
+        <SectionLabel iconColor="purple">
+          <CurrencyDollar size={22} />
+          <div>
+            <span>Pagamento</span>
+            <p>Informe o endereço onde deseja receber seu pedido</p>
+          </div>
+        </SectionLabel>
+
+        <OptionGroup>
+          <PaymentOption type="credit" value="" onChange={() => {}}/>
+          <PaymentOption type="debit" value="" onChange={() => {}}/>
+          <PaymentOption type="cash" value="" onChange={() => {}}/>
+        </OptionGroup>
       </FormBox>
     </StyledForm>
   );

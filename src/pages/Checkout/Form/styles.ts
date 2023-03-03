@@ -8,15 +8,29 @@ export const StyledForm = styled.form`
 export const FormBox = styled.div`
   background-color: ${(props) => props.theme['gray-200']};
   padding: 2.5rem;
+  border-radius: 0.375rem;
+
+  &:first-of-type {
+    margin-bottom: 0.75rem;
+  }
 `;
 
-export const SectionLabel = styled.label`
+interface SectionLabelProps {
+  iconColor: 'purple' | 'yellow';
+}
+
+export const SectionLabel = styled.label<SectionLabelProps>`
   display: flex;
   gap: 0.5rem;
 
   margin-bottom: 2rem;
 
   > div {
+    > span {
+      display: block;
+      margin-bottom: 0.25rem;
+    }
+
     > p {
       font-size: 0.875rem;
       color: ${(props) => props.theme['gray-600']};
@@ -24,7 +38,8 @@ export const SectionLabel = styled.label`
   }
 
   > svg {
-    color: ${(props) => props.theme['yellow-700']};
+    color: ${({ theme, iconColor }) =>
+      theme[iconColor === 'yellow' ? 'yellow-700' : 'purple-300']};
   }
 `;
 
@@ -68,3 +83,10 @@ export const InputGroup = styled.div`
     grid-area: uf;
   }
 `;
+
+export const OptionGroup = styled.fieldset`
+  border: 0;
+  display: flex;
+  flex: 1;
+  gap: 0.75rem;
+`

@@ -39,5 +39,6 @@ export const GlobalStyle = createGlobalStyle`
   :focus {
     outline: 0;
     box-shadow: 0 0 0 2px ${(props) => props.theme['yellow-700']};
+    border-radius: 0.25rem;
   }
 `;

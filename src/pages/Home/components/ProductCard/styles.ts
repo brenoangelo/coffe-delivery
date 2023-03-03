@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const StyledCard = styled.div`
+export const StyledProductCard = styled.div`
   position: relative;
 
   padding: 1.25rem;

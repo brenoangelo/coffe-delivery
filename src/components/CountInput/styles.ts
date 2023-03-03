@@ -17,7 +17,13 @@ export const StyledCountInput = styled.div`
     align-items: center;
     justify-content: center;
 
-    color: ${props => props.theme['purple-300']};
+    transition: color 0.2s;
+
+    color: ${(props) => props.theme['purple-300']};
+
+    &:hover {
+      color: ${(props) => props.theme['purple-700']};
+    }
   }
 
   input {
@@ -26,8 +32,7 @@ export const StyledCountInput = styled.div`
     width: 1.25rem;
 
     text-align: center;
-    color: ${props => props.theme['gray-900']};
-
+    color: ${(props) => props.theme['gray-900']};
 
     :focus {
       outline: 0;

@@ -1,6 +1,7 @@
 import { ShoppingCartSimple } from 'phosphor-react';
 import { Button } from '../../../../components/Button';
 import { CountInput } from '../../../../components/CountInput';
+
 import {
   ActionButtons,
   CardFooter,
@@ -8,7 +9,7 @@ import {
   CategoryFlag,
   CategoryWrapper,
   Price,
-  StyledCard,
+  StyledProductCard,
 } from './styles';
 
 interface CardProps {
@@ -30,7 +31,7 @@ export function ProductCard({
   imgUrl,
 }: CardProps) {
   return (
-    <StyledCard>
+    <StyledProductCard>
       <img src={imgUrl} alt={title} />
       <CardInfo>
         <CategoryWrapper>
@@ -54,6 +55,6 @@ export function ProductCard({
           </Button>
         </ActionButtons>
       </CardFooter>
-    </StyledCard>
+    </StyledProductCard>
   );
 }
