@@ -5,11 +5,18 @@ export const StyledHeader = styled.header`
   justify-content: space-between;
   align-items: center;
   height: 6.5rem;
-`
+`;
 
 export const Logo = styled.div`
-  > img {
-    width: 5.31rem;
+  > a {
+    transition: opacity 0.3s;
+    &:focus {
+      box-shadow: none;
+    }
+
+    &:hover {
+      opacity: 0.7;
+    }
   }
 `;
 

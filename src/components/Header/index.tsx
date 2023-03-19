@@ -1,4 +1,5 @@
 import { MapPin, ShoppingCart } from 'phosphor-react';
+import { Link } from 'react-router-dom';
 import LogoIcon from '../../assets/logo.svg';
 import { Container } from '../../styles/common';
 import { Button } from '../Button';
@@ -9,7 +10,9 @@ export function Header() {
     <Container>
       <StyledHeader>
         <Logo>
-          <img src={LogoIcon} alt="Coffee Delivery Logo" />
+          <Link to="/">
+            <img src={LogoIcon} alt="Coffee Delivery Logo" />
+          </Link>
         </Logo>
 
         <MenuContainer>

@@ -2,6 +2,8 @@ import styled from 'styled-components';
 import { ThemeType } from '../../@types/styled';
 
 export const StyledSuccess = styled.main`
+  margin-top: 5rem;
+
   > h1 {
     color: ${({theme}) => theme['yellow-700']};
   }
