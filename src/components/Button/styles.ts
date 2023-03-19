@@ -1,44 +1,21 @@
 import styled from 'styled-components';
-import { ThemeType } from '../../@types/styled';
-
-const colors = {
-  lightPurple: 'purple-100',
-  purple: 'purple-300',
-  darkPurple: 'purple-700',
-  lightYellow: 'yellow-100',
-  yellow: 'yellow-300',
-  darkYellow: 'yellow-700',
-  white: 'white',
-};
+import { colors, heightSizes, setColorDetails } from './constants';
 
 export type ColorTypes = keyof typeof colors;
-
 export interface ColorDetails {
   text?: ColorTypes;
   background?: ColorTypes;
   icon?: ColorTypes;
 }
 
-interface ContainerProps {
+export interface ContainerProps {
   colorDetails: ColorDetails;
   colorDetailsHover: ColorDetails | boolean;
   fontWeight: number;
   size: 'SM' | 'MD';
+  height: 'SM' | 'MD' | 'XL';
   textTransform: 'uppercase' | 'capitalize' | 'uppercase' | 'lowercase';
 }
-
-const setColorDetails = (
-  { colorDetails, colorDetailsHover }: ContainerProps,
-  state: 'default' | 'hover',
-  type: 'text' | 'background' | 'icon',
-) => {
-  type ColorStateKeysType = keyof typeof colorState;
-  const colorState = state === 'default' ? colorDetails : colorDetailsHover;
-
-  return colors[
-    colorState[(type as ColorStateKeysType) ?? 'default']
-  ] as keyof ThemeType;
-};
 
 export const StyledButton = styled.button<ContainerProps>`
   position: relative;
@@ -47,8 +24,9 @@ export const StyledButton = styled.button<ContainerProps>`
   align-items: center;
   justify-content: center;
   gap: 0.25rem;
+  height: ${props => heightSizes[props.height]};
 
-  padding: 0.5rem;
+  padding: 0 0.5rem;
   border-radius: 0.375rem;
   border: none;
 
@@ -84,7 +62,6 @@ export const StyledButton = styled.button<ContainerProps>`
     color: ${(props) => props.theme['white']};
     font-size: 0.75rem;
     font-weight: 700;
-
   }
 
   transition: color, background-color 0.2s;

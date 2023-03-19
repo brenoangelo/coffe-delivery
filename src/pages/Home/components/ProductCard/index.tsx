@@ -45,7 +45,7 @@ export function ProductCard({
 
       <CardFooter>
         <Price>
-          R$ <strong>{priceFormatted}</strong>
+          R$ <h5>{priceFormatted}</h5>
         </Price>
 
         <ActionButtons>

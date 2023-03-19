@@ -1,9 +1,13 @@
 import { Minus, Plus } from 'phosphor-react';
 import { StyledCountInput } from './styles';
 
-export function CountInput() {
+interface CountInputProps {
+  height?: 'MD' | 'SM';
+}
+
+export function CountInput({ height = 'MD' }: CountInputProps) {
   return (
-    <StyledCountInput>
+    <StyledCountInput height={height}>
       <button>
         <Minus size={14} weight="bold" />
       </button>

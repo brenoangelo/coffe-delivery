@@ -19,11 +19,13 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   fontWeight?: number;
   textTransform?: 'uppercase' | 'capitalize' | 'uppercase' | 'lowercase';
   size?: 'SM' | 'MD';
+  height?: 'SM' | 'MD' | 'XL';
 }
 
 export function Button({
   fontWeight = 400,
   size = 'MD',
+  height = 'MD',
   colorDetails = colorDetailsDefault,
   colorDetailsHover = colorDetailsHoverDefault,
   topCountNumber = null,
@@ -37,6 +39,7 @@ export function Button({
       colorDetailsHover={colorDetailsHover}
       fontWeight={fontWeight}
       size={size}
+      height={height}
       textTransform={textTransform}
       {...props}
     >

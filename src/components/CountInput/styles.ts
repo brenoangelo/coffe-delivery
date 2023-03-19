@@ -1,11 +1,15 @@
 import styled from 'styled-components';
 
-export const StyledCountInput = styled.div`
+interface StyledCountInputProps {
+  height: 'MD' | 'SM';
+}
+
+export const StyledCountInput = styled.div<StyledCountInputProps>`
   background-color: ${(props) => props.theme['gray-400']};
   display: flex;
 
   width: 4.5rem;
-  height: 2.375rem;
+  height: ${(props) => (props.height === 'MD' ? '2.375rem' : '2rem')};
   border-radius: 0.375rem;
 
   button {

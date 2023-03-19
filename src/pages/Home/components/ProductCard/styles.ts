@@ -64,7 +64,8 @@ export const Price = styled.div`
 
   font-size: 0.875rem;
 
-  > strong {
+  > h5 {
+    display: inline-block;
     font-size: 1.5rem;
   }
 `;

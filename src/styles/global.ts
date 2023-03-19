@@ -20,7 +20,7 @@ export const GlobalStyle = createGlobalStyle`
     font-size: 1rem;
   }
 
-  h1, h2, h3, h4, h5, strong{
+  h1, h2, h3, h4, h5{
     font-family: 'Baloo 2', cursive;
   }
 

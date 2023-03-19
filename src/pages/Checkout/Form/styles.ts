@@ -1,15 +1,17 @@
 import styled from 'styled-components';
+import { BoxBase } from '../styles';
 
 export const StyledForm = styled.form`
   max-width: 40rem;
   width: 100%;
+
+  > h4 {
+    margin-bottom: 0.93rem;
+    font-size: 1.125rem;
+  }
 `;
 
-export const FormBox = styled.div`
-  background-color: ${(props) => props.theme['gray-200']};
-  padding: 2.5rem;
-  border-radius: 0.375rem;
-
+export const FormBox = styled(BoxBase)`
   &:first-of-type {
     margin-bottom: 0.75rem;
   }

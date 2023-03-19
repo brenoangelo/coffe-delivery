@@ -22,6 +22,7 @@ export const StyledInput = styled.div<StyledInputProps>`
 
     background-color: ${(props) => props.theme['gray-300']};
     color: ${(props) => props.theme['gray-700']};
+    font-size: 0.875rem;
 
     border: 1px solid ${(props) => props.theme['gray-400']};
     border-radius: 0.25rem;
