@@ -43,27 +43,6 @@ export const StyledButton = styled.button<ContainerProps>`
     color: ${(props) => props.theme[setColorDetails(props, 'default', 'icon')]};
   }
 
-  .circleCount {
-    position: absolute;
-    right: -8px;
-    top: -8px;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    height: 1.25rem;
-    width: 1.25rem;
-
-    border-radius: 50%;
-
-    background-color: ${(props) =>
-      props.theme[setColorDetails(props, 'default', 'icon')]};
-    color: ${(props) => props.theme['white']};
-    font-size: 0.75rem;
-    font-weight: 700;
-  }
-
   transition: color, background-color 0.2s;
 
   &:hover {

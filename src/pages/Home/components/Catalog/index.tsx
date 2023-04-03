@@ -11,14 +11,7 @@ export function Catalog() {
 
         <CoffeeList>
           {coffeeList.map((coffee) => (
-            <ProductCard
-              key={coffee.id}
-              title={coffee.title}
-              description={coffee.description}
-              categories={coffee.categories}
-              imgUrl={coffee.imgUrl}
-              priceFormatted={coffee.priceFormatted}
-            />
+            <ProductCard key={coffee.id} coffee={coffee} />
           ))}
         </CoffeeList>
       </Container>

@@ -12,7 +12,6 @@ const colorDetailsHoverDefault: ColorDetails = {
 };
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
-  topCountNumber?: number | null;
   children: ReactNode;
   colorDetails?: ColorDetails;
   colorDetailsHover?: ColorDetails | boolean;
@@ -28,7 +27,6 @@ export function Button({
   height = 'MD',
   colorDetails = colorDetailsDefault,
   colorDetailsHover = colorDetailsHoverDefault,
-  topCountNumber = null,
   textTransform = 'uppercase',
   children,
   ...props
@@ -43,7 +41,6 @@ export function Button({
       textTransform={textTransform}
       {...props}
     >
-      {topCountNumber && <span className="circleCount">{topCountNumber}</span>}
       {children}
     </StyledButton>
   );

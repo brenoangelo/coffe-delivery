@@ -1,11 +1,14 @@
 import { MapPin, ShoppingCart } from 'phosphor-react';
 import { Link } from 'react-router-dom';
 import LogoIcon from '../../assets/logo.svg';
+import { useCheckout } from '../../hooks/useCheckout';
 import { Container } from '../../styles/common';
 import { Button } from '../Button';
-import { Logo, MenuContainer, StyledHeader } from './styles';
+import { CartLink, Logo, MenuContainer, StyledHeader } from './styles';
 
 export function Header() {
+  const { cart } = useCheckout();
+
   return (
     <Container>
       <StyledHeader>
@@ -28,16 +31,14 @@ export function Header() {
           >
             <MapPin size={22} weight="fill" /> Timon, MA
           </Button>
-          <Button
-            colorDetails={{
-              background: 'lightYellow',
-              icon: 'darkYellow',
-            }}
-            colorDetailsHover={false}
-            topCountNumber={3}
-          >
-            <ShoppingCart size={22} weight="fill" />
-          </Button>
+
+          <CartLink productCount={cart?.length}>
+            <Link to="/checkout">
+              <ShoppingCart size={22} weight="fill" />
+            </Link>
+
+            <span className="circleCount">{cart?.length}</span>
+          </CartLink>
         </MenuContainer>
       </StyledHeader>
     </Container>

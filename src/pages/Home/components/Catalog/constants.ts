@@ -11,7 +11,8 @@ export const coffeeList = [
         name: 'tradicional',
       },
     ],
-    imgUrl: 'products/expresso-tradicional.png'
+    imgUrl: 'products/expresso-tradicional.png',
+    stockCount: 10
   },
   {
     id: 2,
@@ -25,7 +26,8 @@ export const coffeeList = [
         name: 'tradicional',
       },
     ],
-    imgUrl: 'products/expresso-americano.png'
+    imgUrl: 'products/expresso-americano.png',
+    stockCount: 10
   },
   {
     id: 3,
@@ -39,7 +41,8 @@ export const coffeeList = [
         name: 'tradicional',
       },
     ],
-    imgUrl: 'products/expresso-cremoso.png'
+    imgUrl: 'products/expresso-cremoso.png',
+    stockCount: 10
   },
   {
     id: 4,
@@ -57,7 +60,8 @@ export const coffeeList = [
         name: 'com_leite',
       },
     ],
-    imgUrl: 'products/cafe-com-leite.png'
+    imgUrl: 'products/cafe-com-leite.png',
+    stockCount: 10
   },
   {
     id: 5,
@@ -76,7 +80,8 @@ export const coffeeList = [
         name: 'com_leite',
       },
     ],
-    imgUrl: 'products/latte.png'
+    imgUrl: 'products/latte.png',
+    stockCount: 10
   },
   {
     id: 6,
@@ -95,7 +100,8 @@ export const coffeeList = [
         name: 'com_leite',
       },
     ],
-    imgUrl: 'products/capuccino.png'
+    imgUrl: 'products/capuccino.png',
+    stockCount: 10
   },
   {
     id: 7,
@@ -113,7 +119,8 @@ export const coffeeList = [
         name: 'com_leite',
       },
     ],
-    imgUrl: 'products/mocaccino.png'
+    imgUrl: 'products/mocaccino.png',
+    stockCount: 10
   },
   {
     id: 8,
@@ -131,7 +138,8 @@ export const coffeeList = [
         name: 'com_leite',
       },
     ],
-    imgUrl: 'products/chocolate-quente.png'
+    imgUrl: 'products/chocolate-quente.png',
+    stockCount: 10
   },
   {
     id: 9,
@@ -154,7 +162,8 @@ export const coffeeList = [
         name: 'gelado',
       },
     ],
-    imgUrl: 'products/cubano.png'
+    imgUrl: 'products/cubano.png',
+    stockCount: 10
   },
   {
     id: 10,
@@ -168,7 +177,8 @@ export const coffeeList = [
         name: 'especial',
       },
     ],
-    imgUrl: 'products/arabe.png'
+    imgUrl: 'products/arabe.png',
+    stockCount: 10
   },
   {
     id: 11,
@@ -186,7 +196,8 @@ export const coffeeList = [
         name: 'alcoolico',
       },
     ],
-    imgUrl: 'products/irlandes.png'
+    imgUrl: 'products/irlandes.png',
+    stockCount: 10
   },
   {
     id: 12,
@@ -205,7 +216,8 @@ export const coffeeList = [
         name: 'com_leite',
       },
     ],
-    imgUrl: 'products/macchiato.png'
+    imgUrl: 'products/macchiato.png',
+    stockCount: 10
   },
   {
     id: 13,
@@ -219,7 +231,8 @@ export const coffeeList = [
         name: 'especial',
       },
     ],
-    imgUrl: 'products/havaiano.png'
+    imgUrl: 'products/havaiano.png',
+    stockCount: 10
   },
   {
     id: 14,
@@ -237,6 +250,7 @@ export const coffeeList = [
         name: 'gelado',
       },
     ],
-    imgUrl: 'products/expresso-gelado.png'
+    imgUrl: 'products/expresso-gelado.png',
+    stockCount: 10
   },
 ];

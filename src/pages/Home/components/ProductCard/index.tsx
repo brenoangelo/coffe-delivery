@@ -1,6 +1,9 @@
 import { ShoppingCartSimple } from 'phosphor-react';
+import { useMemo, useRef, useState } from 'react';
 import { Button } from '../../../../components/Button';
 import { CountInput } from '../../../../components/CountInput';
+import { useCheckout } from '../../../../hooks/useCheckout';
+import { Coffee, CoffeeCatalog } from '../../types';
 
 import {
   ActionButtons,
@@ -13,23 +16,53 @@ import {
 } from './styles';
 
 interface CardProps {
-  title: string;
-  description: string;
-  categories: {
-    title: string;
-    name: string;
-  }[];
-  priceFormatted: string;
-  imgUrl: string;
+  coffee: Coffee;
+  key: number;
 }
 
 export function ProductCard({
-  title,
-  description,
-  categories,
-  priceFormatted,
-  imgUrl,
+  coffee: {
+    categories,
+    description,
+    imgUrl,
+    price,
+    priceFormatted,
+    title,
+    id
+  },
 }: CardProps) {
+  const { addNewProduct } = useCheckout();
+  const [productCount, setProductCount] = useState(1);
+
+  function handleAddNewProduct() {
+    const newCoffee = {
+      id,
+      price,
+      title,
+      imgUrl,
+      description,
+      categories,
+      priceFormatted,
+      count: productCount,
+    };
+
+    addNewProduct(newCoffee);
+
+    setProductCount(1);
+  }
+
+  function handleAddCount() {
+    setProductCount((state) => state + 1);
+  }
+
+  function handleRemoveCount() {
+    if (productCount === 1) {
+      return;
+    }
+
+    setProductCount((state) => state - 1);
+  }
+
   return (
     <StyledProductCard>
       <img src={imgUrl} alt={title} />
@@ -49,8 +82,12 @@ export function ProductCard({
         </Price>
 
         <ActionButtons>
-          <CountInput />
-          <Button>
+          <CountInput
+            count={productCount}
+            handleAddCount={handleAddCount}
+            handleRemoveCount={handleRemoveCount}
+          />
+          <Button onClick={handleAddNewProduct}>
             <ShoppingCartSimple weight="fill" size={22} />
           </Button>
         </ActionButtons>
