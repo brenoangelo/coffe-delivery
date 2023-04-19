@@ -14,7 +14,6 @@ export function CountInput({
   handleAddCount,
   handleRemoveCount,
 }: CountInputProps) {
-
   return (
     <StyledCountInput height={height}>
       <button onClick={handleRemoveCount}>

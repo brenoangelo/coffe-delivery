@@ -1,4 +1,4 @@
-import { ButtonHTMLAttributes, ReactNode } from 'react';
+import { ButtonHTMLAttributes, ReactNode, memo } from 'react';
 import { StyledButton, ColorDetails } from './styles';
 
 const colorDetailsDefault: ColorDetails = {
@@ -21,7 +21,7 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   height?: 'SM' | 'MD' | 'XL';
 }
 
-export function Button({
+function ButtonComponent({
   fontWeight = 400,
   size = 'MD',
   height = 'MD',
@@ -45,3 +45,5 @@ export function Button({
     </StyledButton>
   );
 }
+
+export const Button = memo(ButtonComponent);

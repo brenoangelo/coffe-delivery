@@ -1,11 +1,15 @@
 import { StyledCartFooter } from './styles';
 
-export function CartFooter() {
+interface CartFooterProps {
+  totalPrice: string;
+}
+
+export function CartFooter({ totalPrice }: CartFooterProps) {
   return (
     <StyledCartFooter>
       <div>
         <span>Total de itens</span>
-        <span>R$ 29,70</span>
+        <span>{totalPrice}</span>
       </div>
 
       <div>
@@ -15,7 +19,7 @@ export function CartFooter() {
 
       <div>
         <span>Total</span>
-        <span>R$ 33,20</span>
+        <span>{totalPrice}</span>
       </div>
     </StyledCartFooter>
   );

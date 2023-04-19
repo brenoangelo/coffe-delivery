@@ -1,4 +1,4 @@
-import { createContext, ReactNode, useReducer } from 'react';
+import { createContext, ReactNode, useCallback, useReducer } from 'react';
 import { ActionTypes } from '../reducers/checkout/action';
 import { checkoutReducer, Product } from '../reducers/checkout/reducer';
 import { toast } from 'react-toastify';
@@ -6,6 +6,8 @@ import { toast } from 'react-toastify';
 interface CheckoutContextValues {
   addNewProduct: (newCartProduct: Product) => void;
   removeProduct: (id: number) => void;
+  changeCountProduct: (id: number, newCount: number) => void;
+
   cart: Product[];
 }
 
@@ -23,7 +25,11 @@ export function CheckoutContextProvider({ children }: CheckoutContextProps) {
 
   const { cart } = checkoutState;
 
-  function addNewProduct(newProduct: Product) {
+  const addNewProduct = useCallback(addNewProductFunction, []);
+  const removeProduct = useCallback(removeProductFunction, []);
+  const changeCountProduct = useCallback(changeCountProductFunction, []);
+
+  function addNewProductFunction(newProduct: Product) {
     dispatch({
       type: ActionTypes.ADD_NEW_PRODUCT,
       payload: {
@@ -31,20 +37,32 @@ export function CheckoutContextProvider({ children }: CheckoutContextProps) {
       },
     });
 
-    toast.success("Café adicionado com sucesso!")
+    toast.success('Café adicionado com sucesso!');
   }
 
-  function removeProduct(productId: number) {
+  function removeProductFunction(productId: number) {
     dispatch({
-      type: ActionTypes.ADD_NEW_PRODUCT,
+      type: ActionTypes.REMOVE_PRODUCT,
       payload: {
         productId,
       },
     });
   }
 
+  function changeCountProductFunction(productId: number, newCount: number) {
+    dispatch({
+      type: ActionTypes.CHANGE_COUNT_PRODUCT,
+      payload: {
+        productId,
+        newCount,
+      },
+    });
+  }
+
   return (
-    <CheckoutContext.Provider value={{ addNewProduct, removeProduct, cart }}>
+    <CheckoutContext.Provider
+      value={{ addNewProduct, removeProduct, changeCountProduct, cart }}
+    >
       {children}
     </CheckoutContext.Provider>
   );
