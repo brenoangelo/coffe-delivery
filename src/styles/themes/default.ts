@@ -15,6 +15,8 @@ export const defaultTheme = {
   'yellow-300': '#dbac2c',
   'yellow-100': '#f1e9c9',
 
+  'red-300': '#f55536',
+
   'purple-700': '#4b2995',
   'purple-300': '#8047f8',
   'purple-100': '#ebe5f9',

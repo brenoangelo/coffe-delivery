@@ -2,6 +2,7 @@ import styled, { css } from 'styled-components';
 
 interface StyledInputProps {
   isOptional: boolean;
+  isError: boolean;
 }
 
 export const StyledInput = styled.div<StyledInputProps>`
@@ -24,7 +25,8 @@ export const StyledInput = styled.div<StyledInputProps>`
     color: ${(props) => props.theme['gray-700']};
     font-size: 0.875rem;
 
-    border: 1px solid ${(props) => props.theme['gray-400']};
+    border: 1px solid ${(props) => props.isError ? props.theme['red-300'] : props.theme['gray-400']};
+
     border-radius: 0.25rem;
   }
 
@@ -41,8 +43,17 @@ export const StyledInput = styled.div<StyledInputProps>`
 
             font-style: italic;
             font-size: 0.75rem;
-            color: ${(props) => props.theme['gray-600']};
+            box-shadow:  ${(props) => props.theme['gray-600']};
           }
         `
       : ''}
 `;
+
+export const ErrorMessage = styled.span`
+  font-size: 0.75rem;
+  display: block;
+
+  color: ${props => props.theme['red-300']};
+
+  margin-top: 0.05rem;
+`

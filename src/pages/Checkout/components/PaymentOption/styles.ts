@@ -1,6 +1,10 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
-export const StyledPaymentOption = styled.label`
+interface StyledPaymentOptionProps {
+  isError: boolean;
+}
+
+export const StyledPaymentOption = styled.label<StyledPaymentOptionProps>`
   display: flex;
   align-items: center;
   width: 100%;
@@ -24,6 +28,12 @@ export const StyledPaymentOption = styled.label`
     cursor: pointer;
 
     transition: color, background-color 0.2s;
+
+    ${(props) =>
+      props.isError &&
+      css`
+        box-shadow: 0 0 0 1px ${props.theme['red-300']};
+      `}
 
     &:hover {
       background-color: ${(props) => props.theme['gray-500']};

@@ -1,27 +1,28 @@
-import { Product } from "./reducer"
+import { CustomerDetails, Product } from './reducer';
 
 export enum ActionTypes {
   ADD_NEW_PRODUCT = 'ADD_NEW_PRODUCT',
   REMOVE_PRODUCT = 'REMOVE_PRODUCT',
   CHANGE_COUNT_PRODUCT = 'CHANGE_COUNT_PRODUCT',
+  SUBMIT_ORDER = 'SUBMIT_ORDER',
 }
 
 export function addNewProductAction(newProduct: Product) {
   return {
     type: ActionTypes.ADD_NEW_PRODUCT,
     payload: {
-      newProduct
-    }
-  }
+      newProduct,
+    },
+  };
 }
 
 export function removeProductAction(id: number) {
   return {
     type: ActionTypes.REMOVE_PRODUCT,
     payload: {
-      id
-    }
-  }
+      id,
+    },
+  };
 }
 
 export function changeCountProductAction(id: number, newCount: number) {
@@ -29,7 +30,16 @@ export function changeCountProductAction(id: number, newCount: number) {
     type: ActionTypes.CHANGE_COUNT_PRODUCT,
     payload: {
       id,
-      newCount
-    }
-  }
+      newCount,
+    },
+  };
+}
+
+export function submitOrderAction(customerDetails: CustomerDetails) {
+  return {
+    type: ActionTypes.CHANGE_COUNT_PRODUCT,
+    payload: {
+      customerDetails
+    },
+  };
 }

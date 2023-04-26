@@ -1,14 +1,19 @@
 import { createContext, ReactNode, useCallback, useReducer } from 'react';
 import { ActionTypes } from '../reducers/checkout/action';
-import { checkoutReducer, Product } from '../reducers/checkout/reducer';
+import {
+  checkoutReducer,
+  CustomerDetails,
+  Product,
+} from '../reducers/checkout/reducer';
 import { toast } from 'react-toastify';
-
 interface CheckoutContextValues {
   addNewProduct: (newCartProduct: Product) => void;
   removeProduct: (id: number) => void;
   changeCountProduct: (id: number, newCount: number) => void;
+  submitOrder: (customerDetails: CustomerDetails) => void;
 
   cart: Product[];
+  customerDetails: CustomerDetails;
 }
 
 interface CheckoutContextProps {
@@ -21,9 +26,10 @@ export function CheckoutContextProvider({ children }: CheckoutContextProps) {
   const [checkoutState, dispatch] = useReducer(checkoutReducer, {
     cart: [],
     productId: null,
+    customerDetails: {},
   });
 
-  const { cart } = checkoutState;
+  const { cart, customerDetails } = checkoutState;
 
   const addNewProduct = useCallback(addNewProductFunction, []);
   const removeProduct = useCallback(removeProductFunction, []);
@@ -59,9 +65,25 @@ export function CheckoutContextProvider({ children }: CheckoutContextProps) {
     });
   }
 
+  function submitOrder(customerDetails: CustomerDetails) {
+    dispatch({
+      type: ActionTypes.SUBMIT_ORDER,
+      payload: {
+        customerDetails,
+      },
+    });
+  }
+
   return (
     <CheckoutContext.Provider
-      value={{ addNewProduct, removeProduct, changeCountProduct, cart }}
+      value={{
+        addNewProduct,
+        removeProduct,
+        changeCountProduct,
+        cart,
+        customerDetails,
+        submitOrder,
+      }}
     >
       {children}
     </CheckoutContext.Provider>

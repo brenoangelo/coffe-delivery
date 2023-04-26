@@ -1,18 +1,23 @@
 import styled from 'styled-components';
-import { BoxBase } from '../styles';
 
-export const StyledShoppingList = styled.aside`
-  width: 100%;
-  max-width: 28rem;
-  > h4 {
-    margin-bottom: 0.93rem;
-    font-size: 1.125rem;
+export const ProductsList = styled.div`
+  // (total height / 2) + footer margin-top
+  max-height: calc((36.93rem / 2) + 1.5rem);
+  overflow: auto;
+  padding-right: 0.5rem;
+
+  &::-webkit-scrollbar {
+    width: 0.5rem;
   }
-`;
 
-export const ShoppingCartBox = styled(BoxBase)`
-  width: 100%;
-`;
+  &::-webkit-scrollbar-track {
+    background-color: ${({theme}) => theme['gray-300']};
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: ${({theme}) => theme['gray-500']};
+  }
+`
 
 export const CartFooterContainer = styled.footer`
   margin-top: 1.5rem;

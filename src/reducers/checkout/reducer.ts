@@ -14,17 +14,24 @@ export interface Product {
   count: number;
 }
 
+export type CustomerDetails = {
+  street?: string;
+  city?: string;
+  neighborhood?: string;
+  state?: string;
+  cep?: string;
+  number?: string;
+  paymentMethod?: string;
+  complement?: string;
+};
+
 interface CheckoutState {
   cart: Product[];
   productId: number | null;
+  customerDetails: CustomerDetails;
 }
 
 export function checkoutReducer(state: CheckoutState, action: any) {
-  console.log({
-    state,
-    action
-  })
-
   switch (action.type) {
     case ActionTypes.ADD_NEW_PRODUCT: {
       const { newProduct } = action.payload;
@@ -73,6 +80,13 @@ export function checkoutReducer(state: CheckoutState, action: any) {
 
           return product;
         }),
+      };
+    }
+
+    case ActionTypes.SUBMIT_ORDER: {
+      return {
+        ...state,
+        customerDetails: action.payload.customerDetails
       };
     }
 
