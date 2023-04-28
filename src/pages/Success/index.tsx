@@ -1,7 +1,7 @@
 import { MapPin } from 'phosphor-react';
 import { Container } from '../../styles/common';
 
-import DeliveryImg from '../../assets/illustration.svg'
+import DeliveryImg from '../../assets/illustration.svg';
 
 import {
   Details,
@@ -9,8 +9,17 @@ import {
   InfoWrapper,
   StyledSuccess,
 } from './styles';
+import { useCheckout } from '../../hooks/useCheckout';
 
 export function Success() {
+  const { customerDetails } = useCheckout();
+
+  const paymentMethodTitle = {
+    credit: 'Cartão de credito',
+    debit: "Cartão de debito",
+    cash: "Dinheiro"
+  }[customerDetails.paymentMethod ?? ""]
+
   return (
     <Container>
       <StyledSuccess>
@@ -26,10 +35,16 @@ export function Success() {
 
               <div>
                 <span>
-                  Entrega em <strong>Rua João Daniel, 102</strong>
+                  Entrega em{' '}
+                  <strong>
+                    {customerDetails.street}, {customerDetails.number}
+                  </strong>
                 </span>
 
-                <span>Farrapos - Porto Alegre, RS</span>
+                <span>
+                  {customerDetails.neighborhood} - {customerDetails.city},{' '}
+                  {customerDetails.state}
+                </span>
               </div>
             </InfoWrapper>
 
@@ -53,12 +68,12 @@ export function Success() {
               <div>
                 <span>Pagamento na entrega</span>
 
-                <strong>Cartão de Crédito</strong>
+                <strong>{paymentMethodTitle}</strong>
               </div>
             </InfoWrapper>
           </DetailsGradientBox>
 
-          <img src={DeliveryImg} alt="Entregador a caminho"/>
+          <img src={DeliveryImg} alt="Entregador a caminho" />
         </Details>
       </StyledSuccess>
     </Container>

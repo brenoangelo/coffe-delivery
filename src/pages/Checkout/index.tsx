@@ -1,4 +1,3 @@
-import { useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { Button } from '../../components/Button';
 import { useCheckout } from '../../hooks/useCheckout';
@@ -20,6 +19,7 @@ import { CurrencyDollar, MapPinLine } from 'phosphor-react';
 import { ADDRESS_INPUTS } from './constants';
 import { Input } from './components/Input';
 import { PaymentOption } from './components/PaymentOption';
+import { CustomerDetails } from '../../reducers/checkout/reducer';
 
 export function Checkout() {
   const {
@@ -29,17 +29,14 @@ export function Checkout() {
   } = useForm({
     resolver: yupResolver(orderValidationSchema),
   });
-  const navigate = useNavigate();
-  const { submitOrder } = useCheckout();
+  const { submitOrder, cart } = useCheckout();
 
-  console.log({
-    errors,
-  });
+  const cartProductsExists = cart.length
 
-  function handleSubmitOrder(data) {
+  function handleSubmitOrder(data: CustomerDetails) {
+    console.log({data})
+
     submitOrder(data);
-
-    navigate('/success');
   }
 
   return (
@@ -65,6 +62,7 @@ export function Checkout() {
                   }
                   {...input}
                   register={register}
+                  disabled={!cartProductsExists}
                 />
               ))}
             </InputGroup>
@@ -81,22 +79,25 @@ export function Checkout() {
 
             <OptionGroup>
               <PaymentOption
-                type="credit"
+                $type="credit"
                 value="credit"
                 register={register}
                 isError={!!errors.paymentMethod}
+                disabled={!cartProductsExists}
               />
               <PaymentOption
-                type="debit"
+                $type="debit"
                 value="debit"
                 register={register}
                 isError={!!errors.paymentMethod}
+                disabled={!cartProductsExists}
               />
               <PaymentOption
-                type="cash"
+                $type="cash"
                 value="cash"
                 register={register}
                 isError={!!errors.paymentMethod}
+                disabled={!cartProductsExists}
               />
             </OptionGroup>
           </FormBox>
@@ -117,6 +118,7 @@ export function Checkout() {
                 background: 'darkYellow',
               }}
               type="submit"
+              disabled={!cartProductsExists}
             >
               Confirmar Pedido
             </Button>

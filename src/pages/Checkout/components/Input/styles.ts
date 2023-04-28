@@ -28,6 +28,11 @@ export const StyledInput = styled.div<StyledInputProps>`
     border: 1px solid ${(props) => props.isError ? props.theme['red-300'] : props.theme['gray-400']};
 
     border-radius: 0.25rem;
+
+    &:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
   }
 
   ${(props) =>

@@ -24,7 +24,7 @@ export const StyledButton = styled.button<ContainerProps>`
   align-items: center;
   justify-content: center;
   gap: 0.25rem;
-  height: ${props => heightSizes[props.height]};
+  height: ${(props) => heightSizes[props.height]};
 
   padding: 0 0.5rem;
   border-radius: 0.375rem;
@@ -50,5 +50,17 @@ export const StyledButton = styled.button<ContainerProps>`
       props.theme[setColorDetails(props, 'hover', 'background')]};
 
     color: ${(props) => props.theme[setColorDetails(props, 'hover', 'text')]};
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+
+    &:hover {
+      background-color: ${(props) =>
+        props.theme[setColorDetails(props, 'default', 'background')]};
+      color: ${(props) =>
+        props.theme[setColorDetails(props, 'default', 'text')]};
+    }
   }
 `;

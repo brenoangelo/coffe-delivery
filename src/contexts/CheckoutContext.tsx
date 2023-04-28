@@ -6,6 +6,7 @@ import {
   Product,
 } from '../reducers/checkout/reducer';
 import { toast } from 'react-toastify';
+import { useNavigate } from 'react-router-dom';
 interface CheckoutContextValues {
   addNewProduct: (newCartProduct: Product) => void;
   removeProduct: (id: number) => void;
@@ -23,6 +24,7 @@ interface CheckoutContextProps {
 export const CheckoutContext = createContext({} as CheckoutContextValues);
 
 export function CheckoutContextProvider({ children }: CheckoutContextProps) {
+  const navigate = useNavigate();
   const [checkoutState, dispatch] = useReducer(checkoutReducer, {
     cart: [],
     productId: null,
@@ -72,6 +74,8 @@ export function CheckoutContextProvider({ children }: CheckoutContextProps) {
         customerDetails,
       },
     });
+
+    navigate('/success');
   }
 
   return (

@@ -44,6 +44,17 @@ export const StyledPaymentOption = styled.label<StyledPaymentOptionProps>`
   > input {
     display: none;
 
+    &:disabled + div {
+      cursor: not-allowed;
+      box-shadow: none;
+      opacity: 0.5;
+
+      &:hover {
+        background-color: ${(props) => props.theme['gray-400']};
+        color: ${(props) => props.theme['gray-700']};
+      }
+    }
+
     &:checked + div {
       box-shadow: 0 0 0 1px ${(props) => props.theme['purple-300']};
       background-color: ${(props) => props.theme['purple-100']};
