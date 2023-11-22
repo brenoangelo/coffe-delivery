@@ -33,6 +33,15 @@ interface CheckoutState {
 
 export function checkoutReducer(state: CheckoutState, action: any) {
   switch (action.type) {
+    case ActionTypes.UPDATE_ALL_PRODUCTS: {
+      const { products } = action.payload;
+
+      return {
+        ...state,
+        cart: products,
+      };
+    }
+
     case ActionTypes.ADD_NEW_PRODUCT: {
       const { newProduct } = action.payload;
       const itemExistsIndex = state.cart.findIndex(
@@ -86,7 +95,7 @@ export function checkoutReducer(state: CheckoutState, action: any) {
     case ActionTypes.SUBMIT_ORDER: {
       return {
         ...state,
-        customerDetails: action.payload.customerDetails
+        customerDetails: action.payload.customerDetails,
       };
     }
 
