@@ -30,8 +30,6 @@ interface CheckoutContextProps {
 export const CheckoutContext = createContext({} as CheckoutContextValues);
 
 export function CheckoutContextProvider({ children }: CheckoutContextProps) {
-  const navigate = useNavigate();
-
   const [checkoutState, dispatch] = useReducer(checkoutReducer, {
     cart: [],
     productId: null,

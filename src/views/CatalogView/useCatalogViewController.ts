@@ -1,27 +1,24 @@
-import { useCallback, useEffect } from 'react';
+import { useEffect } from 'react';
 import { useProductsViewModel } from '../../viewsmodel/products/useProductsViewModel';
-import { CustomerDetails, Product } from '../../reducers/checkout/reducer';
-import { ActionTypes } from '../../reducers/checkout/action';
+import { Product } from '../../reducers/checkout/reducer';
 import { toast } from 'react-toastify';
-import { useNavigate } from 'react-router-dom';
-import { useCheckoutModel } from '../../models/checkout/useCheckoutModel';
 
 export function useCatalogViewController() {
-  const navigate = useNavigate();
-  const {
-    populateProducts,
-    products,
-    productsLoading,
-    addNewProduct
-  } = useProductsViewModel();
+  const { populateProducts, products, productsLoading, addNewProduct } =
+    useProductsViewModel();
 
   useEffect(() => {
     populateProducts();
   }, [populateProducts]);
 
+  function handleAddNewProduct(newCartProduct: Product) {
+    addNewProduct(newCartProduct);
+    toast.success('Produto adicionado ao carrinho com sucesso!');
+  }
+
   return {
     products,
     productsLoading,
-    addNewProduct,
+    handleAddNewProduct,
   };
 }

@@ -4,7 +4,7 @@ import { CoffeeList, StyledCatalog } from './styles';
 import { useCatalogViewController } from './useCatalogViewController';
 
 export function CatalogView() {
-  const { products, productsLoading, addNewProduct } =
+  const { products, productsLoading, handleAddNewProduct } =
     useCatalogViewController();
 
   return (
@@ -20,7 +20,7 @@ export function CatalogView() {
               <ProductCard
                 key={coffee.id}
                 coffee={coffee}
-                addNewProduct={addNewProduct}
+                addNewProduct={handleAddNewProduct}
               />
             ))
           )}

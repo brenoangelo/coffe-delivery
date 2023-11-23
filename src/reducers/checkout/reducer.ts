@@ -96,6 +96,7 @@ export function checkoutReducer(state: CheckoutState, action: any) {
       return {
         ...state,
         customerDetails: action.payload.customerDetails,
+        cart: []
       };
     }
 

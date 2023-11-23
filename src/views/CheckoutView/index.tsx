@@ -23,7 +23,6 @@ import { useCheckoutViewController } from './useCheckoutViewController';
 export function CheckoutView() {
   const {
     cart,
-    submitOrder,
     changeCountProduct,
     removeProduct,
     handleSubmit,
@@ -34,7 +33,7 @@ export function CheckoutView() {
 
   return (
     <Container>
-      <CheckoutForm onSubmit={handleSubmit(submitOrder)}>
+      <CheckoutForm onSubmit={handleSubmit}>
         <FormFields>
           <h4>Complete seu pedido</h4>
 

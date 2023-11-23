@@ -29,12 +29,17 @@ export function useCheckoutViewController() {
     return formatCurrency(getTotalPrice(cart));
   }
 
+  function handleSubmitOrder(customerDetails: CustomerDetails) {
+    submitOrder(customerDetails);
+
+    navigate('/success')
+  }
+
   return {
     removeProduct,
     changeCountProduct,
-    submitOrder,
     cart,
-    handleSubmit,
+    handleSubmit: handleSubmit(handleSubmitOrder),
     register,
     errors,
     totalPrice,
