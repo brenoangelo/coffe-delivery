@@ -1,12 +1,18 @@
-import { createContext, ReactNode, useCallback, useReducer } from 'react';
+import {
+  createContext,
+  ReactNode,
+  useCallback,
+  useEffect,
+  useReducer,
+} from 'react';
 import { ActionTypes } from '../reducers/checkout/action';
 import {
   checkoutReducer,
   CustomerDetails,
   Product,
 } from '../reducers/checkout/reducer';
-import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
+import { getCheckout, setCheckout } from './api/checkout';
 interface CheckoutContextValues {
   addNewProduct: (newCartProduct: Product) => void;
   removeProduct: (id: number) => void;
@@ -24,7 +30,6 @@ interface CheckoutContextProps {
 export const CheckoutContext = createContext({} as CheckoutContextValues);
 
 export function CheckoutContextProvider({ children }: CheckoutContextProps) {
-  const navigate = useNavigate();
   const [checkoutState, dispatch] = useReducer(checkoutReducer, {
     cart: [],
     productId: null,
@@ -32,6 +37,21 @@ export function CheckoutContextProvider({ children }: CheckoutContextProps) {
   });
 
   const { cart, customerDetails } = checkoutState;
+
+  useEffect(() => {
+    dispatch({
+      type: ActionTypes.UPDATE_ALL_PRODUCTS,
+      payload: {
+        products: getCheckout(),
+      },
+    });
+  }, []);
+
+  useEffect(() => {
+    if (!cart.length) return;
+
+    setCheckout(cart);
+  }, [cart]);
 
   const addNewProduct = useCallback(addNewProductFunction, []);
   const removeProduct = useCallback(removeProductFunction, []);
@@ -44,8 +64,6 @@ export function CheckoutContextProvider({ children }: CheckoutContextProps) {
         newProduct,
       },
     });
-
-    toast.success('Café adicionado com sucesso!');
   }
 
   function removeProductFunction(productId: number) {
@@ -74,18 +92,16 @@ export function CheckoutContextProvider({ children }: CheckoutContextProps) {
         customerDetails,
       },
     });
-
-    navigate('/success');
   }
 
   return (
     <CheckoutContext.Provider
       value={{
+        cart,
+        customerDetails,
         addNewProduct,
         removeProduct,
         changeCountProduct,
-        cart,
-        customerDetails,
         submitOrder,
       }}
     >

@@ -5,6 +5,16 @@ export enum ActionTypes {
   REMOVE_PRODUCT = 'REMOVE_PRODUCT',
   CHANGE_COUNT_PRODUCT = 'CHANGE_COUNT_PRODUCT',
   SUBMIT_ORDER = 'SUBMIT_ORDER',
+  UPDATE_ALL_PRODUCTS = 'UPDATE_ALL_PRODUCTS'
+}
+
+export function updatedAllProductsAction(products: Product[]) {
+  return {
+    type: ActionTypes.ADD_NEW_PRODUCT,
+    payload: {
+      products,
+    },
+  };
 }
 
 export function addNewProductAction(newProduct: Product) {

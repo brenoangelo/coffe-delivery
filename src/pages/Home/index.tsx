@@ -1,12 +1,12 @@
-import { Catalog } from "./components/Catalog";
-import { MainHeader } from "./components/MainHeader";
-import { StyledHome } from "./styles";
+import { MainHeader } from '../../components/MainHeader';
+import { CatalogView } from '../../views/CatalogView';
+import { StyledHome } from './styles';
 
-export function Home() {
+export function HomePage() {
   return (
     <StyledHome>
       <MainHeader />
-      <Catalog />
+      <CatalogView />
     </StyledHome>
   );
 }
